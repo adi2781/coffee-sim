@@ -13,7 +13,9 @@ func _ready() -> void:
 	print(camera)  # Debugging line to confirm the camera node is found
 
 func _unhandled_input(event):
+	
 	if event is InputEventMouseMotion:
+			
 		# Rotate Player horizontally with the mouse for looking left and right
 		rotate_y(-event.relative.x * sensitivity)
 		
@@ -23,6 +25,8 @@ func _unhandled_input(event):
 		
 		# Update the camera's rotation in the x-axis
 		camera.rotation_degrees.x = vertical_rotation * 180 / PI
+		
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
