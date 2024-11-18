@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://1wc3fhhowg0e"]
+[gd_scene load_steps=9 format=3 uid="uid://1wc3fhhowg0e"]
 
 [ext_resource type="PackedScene" uid="uid://c0ga4jud2qebm" path="res://player.tscn" id="1_yafl8"]
 
@@ -15,11 +15,17 @@ sky = SubResource("Sky_dvbou")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_x0mld"]
-size = Vector2(10, 10)
+[sub_resource type="BoxShape3D" id="BoxShape3D_3nk1d"]
+size = Vector3(30, 2, 30)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ydj71"]
-data = PackedVector3Array(5, 0, 5, -5, 0, 5, 5, 0, -5, -5, 0, 5, -5, 0, -5, 5, 0, -5)
+[sub_resource type="BoxMesh" id="BoxMesh_h4c53"]
+size = Vector3(30, 2, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_drbv0"]
+size = Vector3(30, 30, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sh451"]
+size = Vector3(30, 30, 2)
 
 [node name="Node3D" type="Node3D"]
 
@@ -35,14 +41,66 @@ cull_mask = 1048574
 environment = SubResource("Environment_iwg04")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0.353556, -0.176778, 0.918558, -0.353556, 0.883882, 0.306189, 0, 23, 0)
 shadow_enabled = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_3nk1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 layers = 2
-mesh = SubResource("PlaneMesh_x0mld")
+mesh = SubResource("BoxMesh_h4c53")
+skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="Ceiling" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_ydj71")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_3nk1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -31, 0)
+layers = 2
+mesh = SubResource("BoxMesh_h4c53")
+skeleton = NodePath("../..")
+
+[node name="Back Wall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Back Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -16)
+shape = SubResource("BoxShape3D_drbv0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Back Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -16)
+layers = 2
+mesh = SubResource("BoxMesh_sh451")
+
+[node name="Left Wall" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 17, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Left Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.31129e-07, -4, -16)
+shape = SubResource("BoxShape3D_drbv0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Left Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.31129e-07, -4, -16)
+layers = 2
+mesh = SubResource("BoxMesh_sh451")
+
+[node name="Right Wall" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 17, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Right Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.71525e-07, -4, -16)
+shape = SubResource("BoxShape3D_drbv0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Right Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.31129e-07, -4, -16)
+layers = 2
+mesh = SubResource("BoxMesh_sh451")
