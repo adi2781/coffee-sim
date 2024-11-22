@@ -1,19 +1,23 @@
 extends RigidBody3D
 
-var sensitivity = 0.1  #Adjust speed of mouse panning
+var sensitivity = 0.01  #Adjust speed of mouse panning
 var vertical_rotation = 0.1 # Manage vertical rotation limits
 var camera  # Reference to the camera node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print("Scene is ready, setting mouse mode...")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)  # Capture the mouse for the FPS control
 	
 	# Get the Camera3D node (adjust path if needed)
+	# Use a deferred call to search for the player when the scene tree is ready
 	camera = get_node("/root/Node3D/Player/Camera3D")
-	print(camera)  # Debugging line to confirm the camera node is found
+
 
 func _unhandled_input(event):
-	
+	if Input.is_action_just_pressed("accept"):
+		DialogueManager.show_example_dialogue_balloon(load("res://dialogue/main.dialogue"), "start")
+		return
 	if event is InputEventMouseMotion:
 			
 		# Rotate Player horizontally with the mouse for looking left and right
