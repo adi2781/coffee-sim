@@ -8,20 +8,20 @@ var clicks = 0
 var time_remaining = 0.0
 var game_active = false
 
-
 func start_game():
 	clicks = 0
 	time_remaining = time_limit
 	game_active = true
-	$Control/VBoxContainer/TextureProgressBar.value = 0
-	$Control/VBoxContainer/TextureProgressBar.max_value = required_clicks
+	$Control/ProgressBar.value = 0
+	$Control/ProgressBar.max_value = required_clicks
 	$Control/Timer.start(time_limit)
 	show()
 
 func _on_Button_pressed():
 	if game_active:
 		clicks += 1
-		$Control/VBoxContainer/TextureProgressBar.value = clicks
+		$Control/ProgressBar.value = clicks
+		
 		$Control/VBoxContainer/Label2.text = "Clicks: %d / %d" % [clicks, required_clicks]
 		if clicks >= required_clicks:
 			end_game(true)
@@ -43,7 +43,7 @@ signal minigame_result(success: bool)
 func _ready() -> void:
 	start_game()
 	# Example: Set initial values
-	$Control/VBoxContainer/TextureProgressBar.value = 0
+	$Control/ProgressBar.value = 0
 
 	# Example: Connect signals
 	$Control/VBoxContainer/Button.pressed.connect(Callable(self, "_on_Button_pressed"))
@@ -57,6 +57,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if game_active:
+		
+		
 		 # Example: Countdown Timer
 		time_remaining -= delta
 		if time_remaining > 0:
