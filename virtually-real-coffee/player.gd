@@ -1,46 +1,37 @@
-extends RigidBody3D
+extends CharacterBody3D
 
-var sensitivity = 0.05 #mouse sensitivity
-var camera 
 
-var horizontal_rotation = 0.0   
-var target_horizontal_rotation = 0.0  # for smoothing
-var vertical_rotation = 0.0  
-var target_vertical_rotation = 0.0  # for smoothing
+const SPEED = 5.0
+const JUMP_VELOCITY = 4.5
 
-const ROTATE_SMOOTHNESS = 2.5  # Adjust for rotational smoothness
-const PITCH_LIMIT = 1.5  # Limit vertical rotation to avoid flipping
-
-func _ready() -> void:
-	print("Scene is ready, setting mouse mode...")
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)  # Capture the mouse for FPS control
-	
-	# Get the Camera3D node
-	camera = get_node("/root/Node3D/Player/Camera3D")
+@onready var pivot := $Pivot2
+@onready var camera := $Pivot2/Camera3D
 
 func _unhandled_input(event):
-	if event is InputEventMouseMotion:
-		# Update target rotation values based on mouse movement
-		target_horizontal_rotation += -event.relative.x * sensitivity * 0.05  # Convert to radians
-		target_vertical_rotation -= event.relative.y * sensitivity * 0.05
-		
-		# Clamp the vertical rotation (pitch)
-		target_vertical_rotation = clamp(target_vertical_rotation, -PITCH_LIMIT, PITCH_LIMIT)
+	if event is InputEventMouseButton:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	elif event.is_action_pressed("ui_cancel"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED and (event is InputEventMouseMotion):
+			pivot.rotate_y(-event.relative.x *0.3)
+			camera.rotate_x(-event.relative.y * 0.3)
+			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-30), deg_to_rad(60))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	# Smoothly interpolate horizontal rotation (yaw)
-	horizontal_rotation = lerp(horizontal_rotation, target_horizontal_rotation, ROTATE_SMOOTHNESS * delta)
-	rotation.y = horizontal_rotation
-	
-	# Smoothly interpolate vertical rotation (pitch)
-	if camera:
-		vertical_rotation = lerp(vertical_rotation, target_vertical_rotation, ROTATE_SMOOTHNESS * delta)
-		camera.rotation.x = vertical_rotation
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 
-	# Handle movement directly without interpolation
-	var input := Vector3.ZERO
-	input.x = Input.get_axis("move_left", "move_right")
-	input.z = Input.get_axis("move_forward", "move_back")
-	
-	apply_central_force(transform.basis * input * 2000.0 * delta)
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+
+	move_and_slide()

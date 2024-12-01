@@ -16,11 +16,11 @@ sky = SubResource("Sky_dg0wo")
 tonemap_mode = 2
 glow_enabled = true
 
-[ext_resource type="PackedScene" uid="uid://c0ga4jud2qebm" path="res://player.tscn" id="1_yafl8"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_jm6os"]
+size = Vector3(60, 2, 60)
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tpgmn"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_m4vtq"]
+size = Vector3(60, 2, 60)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwm7h"]
 size = Vector3(60, 60, 2)
@@ -40,30 +40,11 @@ environment = SubResource("Environment_jcwbd")
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3nk1d"]
-size = Vector3(30, 2, 30)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_jm6os")
 
-[sub_resource type="BoxMesh" id="BoxMesh_h4c53"]
-size = Vector3(30, 2, 30)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_drbv0"]
-size = Vector3(30, 30, 2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_sh451"]
-size = Vector3(30, 30, 2)
-
-[node name="Node3D" type="Node3D"]
-
-[node name="Player" parent="." instance=ExtResource("1_yafl8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2)
-linear_damp = 3.0
-
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-cull_mask = 1048574
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_iwg04")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_m4vtq")
 
 [node name="Ceiling" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 58, 0)
