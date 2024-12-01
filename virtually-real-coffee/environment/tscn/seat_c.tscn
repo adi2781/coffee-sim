@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2suqy33ucv0n"]
+
+[ext_resource type="PackedScene" uid="uid://mpvh0b8aqci8" path="res://environment/glb/seatC.glb" id="1_rlabl"]
+
+[node name="seatC" instance=ExtResource("1_rlabl")]

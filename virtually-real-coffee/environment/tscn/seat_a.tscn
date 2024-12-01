@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5yvi2xyn14ix"]
+
+[ext_resource type="PackedScene" uid="uid://cujxq7f3rxulc" path="res://environment/glb/seatA.glb" id="1_pavla"]
+
+[node name="seatA" instance=ExtResource("1_pavla")]

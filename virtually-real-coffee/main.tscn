@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://1wc3fhhowg0e"]
+[gd_scene load_steps=12 format=3 uid="uid://1wc3fhhowg0e"]
 
 [ext_resource type="PackedScene" uid="uid://c0ga4jud2qebm" path="res://player.tscn" id="1_yafl8"]
 [ext_resource type="PackedScene" uid="uid://brcyd2naubw3o" path="res://asset test/monkeytest.blend" id="3_7lt7a"]
-[ext_resource type="ArrayMesh" uid="uid://wsxncxk5aysh" path="res://asset test/firstblend_monkey_Suzanne.res" id="3_im0hb"]
 
 [sub_resource type="Skin" id="Skin_7o42i"]
 
@@ -40,7 +39,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
-mesh = ExtResource("3_im0hb")
 skin = SubResource("Skin_7o42i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
