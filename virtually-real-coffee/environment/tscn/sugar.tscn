@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhbo8jptm66hh"]
-
-[ext_resource type="PackedScene" uid="uid://c71gnhhkdycah" path="res://environment/glb/sugar.glb" id="1_v0g47"]
-
-[node name="sugar" instance=ExtResource("1_v0g47")]

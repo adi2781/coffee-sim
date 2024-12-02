@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7g73wetoovry"]
-
-[ext_resource type="PackedScene" uid="uid://dv5e8nk1ods5x" path="res://environment/glb/windowL.glb" id="1_mlchh"]
-
-[node name="windowL" instance=ExtResource("1_mlchh")]
-
-[node name="Cube_015" parent="." index="0"]
-transform = Transform3D(0.345708, 0, 0, 0, 0.443546, 0, 0, 0, 3.60354, -3.13576, 3.14932, -0.00676727)
