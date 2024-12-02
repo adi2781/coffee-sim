@@ -19,6 +19,10 @@ func _ready() -> void:
 	camera = get_node("/root/Node3D/Player/Camera3D")
 
 func _unhandled_input(event):
+	if Input.is_action_just_pressed("accept"):
+		DialogueManager.show_example_dialogue_balloon(load("res://dialogue/main.dialogue"), "start")
+		return
+	
 	if event is InputEventMouseMotion:
 		# Update target rotation values based on mouse movement
 		target_horizontal_rotation += -event.relative.x * sensitivity * 0.05  # Convert to radians
