@@ -32,6 +32,7 @@ func _on_Timer_timeout():
 func end_game(success: bool):
 	game_active = false
 	$Control/Timer.stop()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	emit_signal("minigame_result", success)
 	hide()
 
@@ -41,6 +42,8 @@ signal minigame_result(success: bool)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	await get_tree().create_timer(20).timeout
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	start_game()
 	# Example: Set initial values
 	$Control/ProgressBar.value = 0
@@ -58,10 +61,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if game_active:
 		
-		
 		 # Example: Countdown Timer
 		time_remaining -= delta
 		if time_remaining > 0:
 			$Control/VBoxContainer/Label.text = "Time Left: %d seconds" % int(time_remaining)
 		else:
+			
 			end_game(false)  # End the game if time runs out

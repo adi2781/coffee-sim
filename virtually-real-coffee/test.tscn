@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://c3mwipw32latp"]
+[gd_scene load_steps=50 format=3 uid="uid://c3mwipw32latp"]
 
 [ext_resource type="PackedScene" uid="uid://b5yvi2xyn14ix" path="res://environment/tscn/seat_a.tscn" id="1_di1us"]
 [ext_resource type="Script" path="res://gameflow.gd" id="1_xe8jw"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://bhbo8jptm66hh" path="res://environment/tscn/sugar.tscn" id="18_8n2tu"]
 [ext_resource type="PackedScene" uid="uid://5iwn8rcyx62i" path="res://environment/tscn/window_full.tscn" id="22_kwa00"]
 [ext_resource type="PackedScene" uid="uid://djl0qebjqhlpf" path="res://environment/tscn/sconce.tscn" id="24_lwa3g"]
+[ext_resource type="PackedScene" uid="uid://vdb26acuf4pf" path="res://minigame.tscn" id="25_qa1sk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j706l"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -507,3 +508,5 @@ light_bake_mode = 1
 shadow_enabled = true
 shadow_bias = 0.695
 omni_range = 8.89824
+
+[node name="Game Layer" parent="." instance=ExtResource("25_qa1sk")]
