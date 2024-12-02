@@ -1,7 +1,7 @@
 extends Node3D
 
 var current_state: String = "main"  
-var first_scene = 100
+var first_scene = 30
 var finish = false
 
 func wait_for_seconds(seconds: float):
@@ -32,7 +32,7 @@ func start_game():
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	finish = true;
-	reset_scene()
+	#reset_scene()
 	#emit_signal("prev_game_done")
 
 func post_minigame_1():
