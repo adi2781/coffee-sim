@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxdgc8s4selyp"]
+
+[ext_resource type="PackedScene" uid="uid://cthya2kugiduf" path="res://environment/glb/windowMID.glb" id="1_niagn"]
+
+[node name="windowMID" instance=ExtResource("1_niagn")]
+
+[node name="Cube_014" parent="." index="0"]
+transform = Transform3D(0.345708, 0, 0, 0, 0.443546, 0, 0, 0, 3.60354, -3.13576, 3.12137, 0.0288215)

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlm5gxw8xrjrn"]
+
+[ext_resource type="PackedScene" uid="uid://de7qbsw3rrwsv" path="res://environment/glb/lamp.glb" id="1_33wnh"]
+
+[node name="lamp" instance=ExtResource("1_33wnh")]
