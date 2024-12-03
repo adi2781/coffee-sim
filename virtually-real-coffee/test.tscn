@@ -129,6 +129,7 @@ script = ExtResource("1_xe8jw")
 
 [node name="Player" parent="." instance=ExtResource("2_ey3ec")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -10.9114)
+visible = false
 linear_damp = 3.0
 
 [node name="Camera3D" type="Camera3D" parent="Player"]

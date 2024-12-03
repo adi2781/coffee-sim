@@ -47,4 +47,7 @@ func _process(delta: float) -> void:
 	input.x = Input.get_axis("move_left", "move_right")
 	input.z = Input.get_axis("move_forward", "move_back")
 	
+	
+	global_transform.origin.x = clamp(global_transform.origin.x, -6, 1)
+	global_transform.origin.z = clamp(global_transform.origin.z, -12, -9)
 	apply_central_force(transform.basis * input * 2000.0 * delta)
