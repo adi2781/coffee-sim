@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://bhbo8jptm66hh" path="res://environment/tscn/sugar.tscn" id="18_8n2tu"]
 [ext_resource type="PackedScene" uid="uid://5iwn8rcyx62i" path="res://environment/tscn/window_full.tscn" id="22_kwa00"]
 [ext_resource type="PackedScene" uid="uid://djl0qebjqhlpf" path="res://environment/tscn/sconce.tscn" id="24_lwa3g"]
-[ext_resource type="PackedScene" uid="uid://vdb26acuf4pf" path="res://minigame.tscn" id="25_qa1sk"]
+[ext_resource type="Texture2D" uid="uid://35p2ho3gn4i7" path="res://UI-assets/IMG_4165.png" id="25_fpwv7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j706l"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -510,4 +510,7 @@ shadow_enabled = true
 shadow_bias = 0.695
 omni_range = 8.89824
 
-[node name="Game Layer" parent="." instance=ExtResource("25_qa1sk")]
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1.76706, 0, 0, 0, 1.76706, 0, 0, 0, 1.76706, 0, 0.203804, -4.90988)
+pixel_size = 0.001
+texture = ExtResource("25_fpwv7")

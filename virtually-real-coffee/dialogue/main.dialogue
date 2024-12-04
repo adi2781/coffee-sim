@@ -1,27 +1,21 @@
 ~ start
 System Assistant: Booting Up… 
 System Assistant: It’s a nice little day at the local cafe. The weather is sunny, approximately 67 degrees Fahrenheit, 19.4 degrees Celsius. There is a 10% chance of rain, and the humidity is at a comfortable 35%. It’s the perfect day for a nice customer to get their cup of coffee. 
-System Assistant: Oh? There's someone coming in!
-System Assistant: Oh! That’s the first customer of the day- let’s take their order. 
-Customer: Hey there. 
+Customer: Good morning. ...
+Customer: Ahem..
+System Assistant: Oh! That’s the first customer of the day- let’s take their order.  
 System Assistant: This is Meri, a regular at this cafe. They usually come in between the times of 6:00-6:15, picking up a concept coffee just before work. Preferred flavor: Post Modern Architecture. Initiate small talk. 
 Rachel: Hello there and good morning yourself! Would you like your usual? 
 Customer: Yes, please. Thank you. 
-System: Loading Coffee Creation...
-
-=> END
-
-~ post_minigame
+System Assistant: Loading Coffee Creation... (Minigame)
+System Assistant: Coffee created successfully. Proceed with customer.
 Customer: …Actually, could I try something different? 
 Rachel: Of course! I apologize for the inconvenience. What would you like? 
 Customer: I’m not sure. 
-=> END
-
-~ deep_emotion
 Rachel: Well, we have the perfect option for you!  Mind Writing. With advanced AI technology, I can essentially read the mind of any customer, and come up with the perfect concept coffee flavor.
 Customer: Hm…okay, I’ll try it. It doesn’t cost extra, does it? Everything seems to cost extra nowadays, heh. 
 Rachel: Since this is your first time using this incredible technology, no, it does not! [Disclaimer: Will Cost Extra For The Next Procedure.] 
-Customer: sighs Alright, hit me with it. 
+Customer: (sighs) Alright, hit me with it. 
 System Assistant: Booting up Mind Writing systems. System check. Ready to operate.
 Rachel: Has anything concerned you recently? 
 Customer: ...Nothing in particular. 
@@ -32,15 +26,13 @@ Rachel: Your family is not around? Do you miss them?
 Customer: Yeah, I guess I do. I’ve been busy, and not had a lot of time for them...and they live far away... 
 Rachel: Is there a particular memory you miss with your family?
 Customer: I remember when I was a kid, after school and work was over, we would sit in the living room, by the fireplace, watching a movie. 
+System Assistant: Loading Coffee Creation... (Minigame)
 Rachel: (Done Processing!) Thank you for your cooperation! I will just be a moment! 
-=> END
-
-~ ending_postsecondminigame
 System Assistant: Heartwarming Fireplace Scene! The perfect flavor for this customer!
 Rachel: Based on your Mind Writing, this flavor should be your perfect match! 
 Customer: Takes a sip....They love it! Oh my..! What flavor is this? 
 Rachel: Sorry! I cannot say- but when you come in next time for your Mind Writing for the low price of $50.99, you may also learn the name of the flavor for an additional $10!
-Customer: Unimpressed. ...Right. Technology, hm. looks at nametag Rachel, right? 
+Customer: (Unimpressed) ...Right. Technology, hm. (looks at nametag) Rachel, right? 
 Rachel: That is the name of my program, yes. 
 Customer: Thanks. I don’t...really know if you guys can feel, or anything. But you knew I wanted to be with my family again, and tried to make me happy. I appreciate that. Have a nice day. 
 System Assistant: The first customer has left!
